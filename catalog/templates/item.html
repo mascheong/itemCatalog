@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% block content %}
+	<div class="row justify-content-center">
+		<h2>{{qitem.name}}</h2>
+	</div>
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+				{% for message in messages %}
+					<strong> {{ message }} </strong>
+				{% endfor %}
+		 {% endif %}
+		{% endwith %}
+	</div>
+  </br>
+  {{qitem.description}}
+  </br>
+	</br>
+		{% if session['user_id'] == qitem.user_id %}
+			<div class="row">
+				<div class="col-md-auto">
+					<h5><a href="/catalog/{{qitem.category}}/{{qitem.name}}/edit">Edit</a></h5>
+				</div>
+				<div class="col-md-auto">
+					<h5><a href="/catalog/{{qitem.category}}/{{qitem.name}}/delete">Delete</a></h5>
+				</div>
+			</div>
+		{% endif %}
+{% endblock %}

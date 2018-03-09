@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block content %}
+  <div class="row justify-content-center">
+    <h2>Do you want to delete {{item.name}}?</h2>
+  </div>
+  </br>
+  </br>
+  <form action="{{url_for('deleteItem', category=category, item=item.name)}}" method = 'POST'>
+    <div class="row">
+      <div class="col-md-auto">
+        <input type='submit' value='Delete'>
+      </div>
+      <div class="col-md-auto">
+        <h5><a href='{{url_for('showCatalog')}}'>Cancel</a></h5>
+      </div>
+    </div>
+  </form>
+{% endblock %}
